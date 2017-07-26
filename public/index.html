@@ -1,20 +1,21 @@
 <html>
 <head>
     <title>Barcelona Bicycles</title>
-    <style>
-        #map {
-            height: 100%;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="bicycle.css">
 </head>
 <body>
-<div id="map"></div>
+<div id="windows">
+    <div class="window loading active">
+        Loading...
+    </div>
+    <div class="window browserNotSupported">
+        Browser not supported :(
+    </div>
+    <div class="window map">
+        <div id="map"></div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="bicycle.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8drIp4jnDhfKKC9oaBmqTfC1UFYkW4_4&callback=initMap" async defer></script>
 </body>
