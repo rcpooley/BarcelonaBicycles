@@ -6,7 +6,7 @@ var $stations = $('.stationswrapper');
 
 //Settings
 var settings = {
-    positionTimeout: 6000
+    positionTimeout: 30000
 };
 
 //Page module
@@ -106,21 +106,10 @@ var lib = {
 
 //Bikes module
 function getBikes(callback) {
-    var state = 0;
-    setTimeout(function () {
-        state = -1;
-        if (state == 0) {
-            callback();
-        }
-    }, 6000);
-
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            if (state == 0) {
-                state = 1;
-                callback(JSON.parse(this.responseText));
-            }
+            callback(JSON.parse(this.responseText));
         }
     };
     req.open("GET", "/bicycles");

@@ -30,14 +30,37 @@ function getBikeJson() {
     });
 }
 
+//Bicycle cache module
+function now() {
+    return parseInt(new Date().getTime());
+}
+var cachedBikes;
+var updateUntil = now();
+setInterval(function () {
+    if (now() < updateUntil) {
+        console.log('updating');
+        getBikeJson().then(function (data) {
+            cachedBikes = data;
+        }, function (err) {
+            console.trace(err);
+        });
+    }
+}, 10000);
+
 //Handle get requests
 app.get('/bicycles', function (req, res) {
-    getBikeJson().then(function (data) {
-        res.send(JSON.stringify(data));
-    }, function (err) {
-        console.trace(err);
-        res.send('An error occured, check console for more details');
-    });
+    if (cachedBikes && now() < updateUntil) {
+        res.send(JSON.stringify(cachedBikes));
+    } else {
+        updateUntil = now() + 5 * 60 * 1000;
+        getBikeJson().then(function (data) {
+            cachedBikes = data;
+            res.send(JSON.stringify(data));
+        }, function (err) {
+            console.trace(err);
+            res.send('An error occured, check console for more details');
+        });
+    }
 });
 
 app.get('*', function (req, res) {
