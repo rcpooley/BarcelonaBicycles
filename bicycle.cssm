@@ -54,10 +54,18 @@
             .stationswrapper {
                 max-height: 100%;
 
+                .stationopt.loadmore {
+                    padding: 10px;
+                    text-align: center;
+                }
+
+                .stationopt:not(.loadmore) {
+                    padding: 4px 10px;
+                }
+
                 .stationopt {
                     border-bottom: 1px solid black;
                     cursor: default;
-                    padding: 4px 10px;
 
                     > table {
                         width: 100%;

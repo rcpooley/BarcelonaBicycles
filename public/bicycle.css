@@ -52,10 +52,18 @@
     max-height: 100%;
 }
 
+#windows .window.map #bikelist .stationswrapper .stationopt.loadmore {
+    padding: 10px;
+    text-align: center;
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt:not(.loadmore) {
+    padding: 4px 10px;
+}
+
 #windows .window.map #bikelist .stationswrapper .stationopt {
     border-bottom: 1px solid black;
     cursor: default;
-    padding: 4px 10px;
 }
 
 #windows .window.map #bikelist .stationswrapper .stationopt > table {

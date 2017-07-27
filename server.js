@@ -38,7 +38,6 @@ var cachedBikes;
 var updateUntil = now();
 setInterval(function () {
     if (now() < updateUntil) {
-        console.log('updating');
         getBikeJson().then(function (data) {
             cachedBikes = data;
         }, function (err) {
