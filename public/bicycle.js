@@ -2,6 +2,7 @@
 var $window = $(window);
 var $winmap = $('.window.map');
 var $failreason = $('#failreason');
+var $stations = $('.stationswrapper');
 
 //Settings
 var settings = {
@@ -13,6 +14,17 @@ var mypage = {
     setWindow: function (win) {
         $('.window').removeClass('active');
         $('.window.' + win).addClass('active');
+    },
+    addStationOpt: function (st) {
+        var $div = $(document.createElement('div'));
+        $div.addClass('stationopt');
+        $div.html(st.streetNumber + ' ' + st.streetName + '<br>' +
+            st.bikes + ' / ' + st.slots + ' Bikes Available');
+        $stations.append($div);
+        $stations.append($stations.find('.loadmore'));
+        var obj = $stations[0];
+        obj.scrollTop = obj.scrollHeight;
+        return $div;
     }
 };
 
@@ -112,12 +124,17 @@ function loadBikes() {
         stations = bikes.stations;
 
         loadStations(5);
+
+        $stations.find('.loadmore').click(function () {
+            loadStations(5);
+        });
     });
 }
 
 function loadStations(num) {
     for (var i = 0; i < num && stations.length > 0; i++) {
         var st = stations.splice(0, 1)[0];
+        var $opt = mypage.addStationOpt(st);
         var iconUrl = 'https://barcelonabikes.tk/bicon.png';
         if (st.bikes == 0) iconUrl = 'https://barcelonabikes.tk/biconRed.png';
         var marker = new google.maps.Marker({
@@ -126,12 +143,18 @@ function loadStations(num) {
             map: map
         });
 
+        $opt.click((function (marker) {
+            return function () {
+                map.setCenter(marker.position);
+            };
+        })(marker));
+
         google.maps.event.addListener(marker, 'click', (function (marker, st) {
             return function () {
                 infowindow.setContent(lib.buildStationContent(st));
                 infowindow.open(map, marker);
             };
-        })(marker, st))
+        })(marker, st));
     }
 }
 

@@ -27,9 +27,42 @@
     height: 100%;
 }
 
+#windows .window.map:not(.mobile) #bikelist > table {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+#windows .window.map:not(.mobile) #bikelist > table > tbody > tr {
+    vertical-align: top;
+}
+
+#windows .window.map:not(.mobile) #bikelist > table > tbody > tr > td {
+    margin: 0;
+    padding: 0;
+}
+
 #windows .window.map:not(.mobile) #bikelist .title {
     text-align: center;
     font-size: 30px;
+    border-bottom: 1px solid black;
+}
+
+#windows .window.map:not(.mobile) #bikelist .stationswrapper {
+    max-height: 100%;
+    overflow: auto;
+}
+
+#windows .window.map:not(.mobile) #bikelist .stationswrapper .stationopt {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#windows .window.map:not(.mobile) #bikelist .stationswrapper .stationopt:hover {
+    background: #d0d0d0;
 }
 
 #windows .window.map.mobile #map {

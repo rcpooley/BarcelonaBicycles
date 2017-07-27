@@ -28,9 +28,42 @@
             width: 50%;
             height: 100%;
 
+            > table {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                border-collapse: collapse;
+
+                > tbody > tr {
+                    vertical-align: top;
+
+                    > td {
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+
             .title {
                 text-align: center;
                 font-size: 30px;
+                border-bottom: 1px solid black;
+            }
+
+            .stationswrapper {
+                max-height: 100%;
+                overflow: auto;
+
+                .stationopt {
+                    border-bottom: 1px solid black;
+                    cursor: pointer;
+                    padding: 10px;
+                }
+
+                .stationopt:hover {
+                    background: #d0d0d0;
+                }
             }
         }
     }
