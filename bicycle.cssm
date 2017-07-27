@@ -63,6 +63,22 @@
                     padding: 4px 10px;
                 }
 
+                .stationopt:not(.loadmore).nobikes {
+                    background: rgb(255, 146, 146);
+                }
+
+                .stationopt:not(.loadmore).nobikes:hover {
+                    background: rgb(255, 74, 74);
+                }
+
+                .stationopt:not(.loadmore):not(.nobikes) {
+                    background: #81ff81;
+                }
+
+                .stationopt:not(.loadmore):not(.nobikes):hover {
+                    background: #34c134;
+                }
+
                 .stationopt {
                     border-bottom: 1px solid black;
                     cursor: default;

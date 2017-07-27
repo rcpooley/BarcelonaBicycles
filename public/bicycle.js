@@ -18,6 +18,9 @@ var mypage = {
     addStationOpt: function (st) {
         var $div = $(document.createElement('div'));
         $div.addClass('stationopt');
+        if (st.bikes == 0) {
+            $div.addClass('nobikes');
+        }
         var g = st.bikes == 1 ? '' : 's';
 
         var dist = lib.getDistanceFromLatLonInKm(myPos.coords, st);

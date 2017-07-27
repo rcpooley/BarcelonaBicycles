@@ -61,6 +61,22 @@
     padding: 4px 10px;
 }
 
+#windows .window.map #bikelist .stationswrapper .stationopt:not(.loadmore).nobikes {
+    background: rgb(255, 146, 146);
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt:not(.loadmore).nobikes:hover {
+    background: rgb(255, 74, 74);
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt:not(.loadmore):not(.nobikes) {
+    background: #81ff81;
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt:not(.loadmore):not(.nobikes):hover {
+    background: #34c134;
+}
+
 #windows .window.map #bikelist .stationswrapper .stationopt {
     border-bottom: 1px solid black;
     cursor: default;
