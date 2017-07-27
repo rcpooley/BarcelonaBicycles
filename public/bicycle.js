@@ -5,7 +5,7 @@ var $failreason = $('#failreason');
 
 //Settings
 var settings = {
-    positionTimeout: 2000
+    positionTimeout: 6000
 };
 
 //Page module
@@ -69,7 +69,7 @@ function getBikes(callback) {
     req.send();
 }
 
-var map, infowindow, myPos;
+var map, infowindow, myPos, stations;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(41.3990183, 2.1353762),
@@ -103,32 +103,36 @@ function loadBikes() {
             return mypage.setWindow('noBikes');
         }
 
-        var stations = bikes.stations;
-        stations.sort(function (a, b) {
+        bikes.stations.sort(function (a, b) {
             var aDist = lib.dist(a.latitude, a.longitude, myPos.coords.latitude, myPos.coords.longitude);
             var bDist = lib.dist(b.latitude, b.longitude, myPos.coords.latitude, myPos.coords.longitude);
             var m = Math.pow(10, 6);
             return parseInt(aDist * m - bDist * m);
         });
+        stations = bikes.stations;
 
-        for (var i = 0; i < stations.length && i < 7; i++) {
-            var st = stations[i];
-            var iconUrl = 'https://barcelonabikes.tk/bicon.png';
-            if (st.bikes == 0) iconUrl = 'https://barcelonabikes.tk/biconRed.png';
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(st.latitude, st.longitude),
-                icon: iconUrl,
-                map: map
-            });
-
-            google.maps.event.addListener(marker, 'click', (function (marker, st) {
-                return function () {
-                    infowindow.setContent(lib.buildStationContent(st));
-                    infowindow.open(map, marker);
-                };
-            })(marker, st))
-        }
+        loadStations(5);
     });
+}
+
+function loadStations(num) {
+    for (var i = 0; i < num && stations.length > 0; i++) {
+        var st = stations.splice(0, 1)[0];
+        var iconUrl = 'https://barcelonabikes.tk/bicon.png';
+        if (st.bikes == 0) iconUrl = 'https://barcelonabikes.tk/biconRed.png';
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(st.latitude, st.longitude),
+            icon: iconUrl,
+            map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function (marker, st) {
+            return function () {
+                infowindow.setContent(lib.buildStationContent(st));
+                infowindow.open(map, marker);
+            };
+        })(marker, st))
+    }
 }
 
 function onResize() {
