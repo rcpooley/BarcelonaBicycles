@@ -41,8 +41,35 @@
 
 #windows .window.map #bikelist .stationswrapper .stationopt {
     border-bottom: 1px solid black;
+    cursor: default;
+    padding: 4px 10px;
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt > table {
+    width: 100%;
+    heigh: 100%;
+    border-collapse: collapse;
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt > table > tbody > tr > td {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt > table td.numbikes {
+    width: 80px;
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt > table td.directions {
+    text-align: right;
+    width: 30px;
+}
+
+#windows .window.map #bikelist .stationswrapper .stationopt > table td.directions img {
+    width: 26px;
+    height: 26px;
     cursor: pointer;
-    padding: 10px;
 }
 
 #windows .window.map #bikelist .stationswrapper .stationopt:hover {

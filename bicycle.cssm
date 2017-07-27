@@ -43,8 +43,35 @@
 
                 .stationopt {
                     border-bottom: 1px solid black;
-                    cursor: pointer;
-                    padding: 10px;
+                    cursor: default;
+                    padding: 4px 10px;
+
+                    > table {
+                        width: 100%;
+                        heigh: 100%;
+                        border-collapse: collapse;
+
+                        > tbody > tr > td {
+                            margin: 0;
+                            padding: 0;
+                            text-align: left;
+                        }
+
+                        td.numbikes {
+                            width: 80px;
+                        }
+
+                        td.directions {
+                            text-align: right;
+                            width: 30px;
+
+                            img {
+                                width: 26px;
+                                height: 26px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
                 }
 
                 .stationopt:hover {

@@ -18,12 +18,30 @@ var mypage = {
     addStationOpt: function (st) {
         var $div = $(document.createElement('div'));
         $div.addClass('stationopt');
-        $div.html(st.streetNumber + ' ' + st.streetName + '<br>' +
-            st.bikes + ' / ' + st.slots + ' Bikes Available');
+        var g = st.bikes == 1 ? '' : 's';
+
+        var tbl = document.createElement('table');
+        $div.append(tbl);
+        var row = tbl.insertRow(-1);
+        $(row.insertCell(-1))
+            .html('<span style="font-size:28px;">' + st.bikes + '</span> bike' + g)
+            .addClass('numbikes');
+        $(row.insertCell(-1))
+            .html(st.streetNumber + ' ' + st.streetName)
+            .addClass('location');
+        $(row.insertCell(-1))
+            .html('<a href="https://www.google.com/maps/dir/?api=1&origin=' + lib.formatPos(myPos.coords) + '&destination=' + lib.formatPos(st) + '" target="_blank"><img src="directions.png"></a>')
+            .addClass('directions');
+
         $stations.append($div);
+
+        //Add move more to end
         $stations.append($stations.find('.loadmore'));
+
+        //Scroll to bottom
         var obj = $stations[0];
         obj.scrollTop = obj.scrollHeight;
+
         return $div;
     }
 };
@@ -55,6 +73,9 @@ var lib = {
         return 'Bike Station:<br>' +
             st.streetNumber + ' ' + st.streetName + '<br>' +
             st.bikes + ' / ' + st.slots + ' Available';
+    },
+    formatPos: function (pos) {
+        return pos.latitude + ',' + pos.longitude;
     }
 };
 
@@ -145,7 +166,7 @@ function loadStations(num) {
 
         $opt.click((function (marker) {
             return function () {
-                map.setCenter(marker.position);
+                map.panTo(marker.position);
             };
         })(marker));
 
