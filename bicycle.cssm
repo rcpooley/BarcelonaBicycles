@@ -12,6 +12,10 @@
         visibility: visible;
     }
 
+    .window.map:not(.mobile) .stationswrapper {
+        overflow: auto;
+    }
+
     .window.map {
         #bikelist {
             > table {
@@ -39,7 +43,6 @@
 
             .stationswrapper {
                 max-height: 100%;
-                overflow: auto;
 
                 .stationopt {
                     border-bottom: 1px solid black;
@@ -48,7 +51,7 @@
 
                     > table {
                         width: 100%;
-                        heigh: 100%;
+                        height: 100%;
                         border-collapse: collapse;
 
                         > tbody > tr > td {
@@ -81,7 +84,7 @@
         }
     }
 
-    .window.map:not(.mobile) {
+    .window.map:not(.portrait) {
         #map {
             position: absolute;
             left: 0;
@@ -99,7 +102,7 @@
         }
     }
 
-    .window.map.mobile {
+    .window.map.portrait {
         #map {
             position: absolute;
             left: 0;

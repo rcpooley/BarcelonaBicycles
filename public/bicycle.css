@@ -11,6 +11,10 @@
     visibility: visible;
 }
 
+#windows .window.map:not(.mobile) .stationswrapper {
+    overflow: auto;
+}
+
 #windows .window.map #bikelist > table {
     width: 100%;
     height: 100%;
@@ -36,7 +40,6 @@
 
 #windows .window.map #bikelist .stationswrapper {
     max-height: 100%;
-    overflow: auto;
 }
 
 #windows .window.map #bikelist .stationswrapper .stationopt {
@@ -47,7 +50,7 @@
 
 #windows .window.map #bikelist .stationswrapper .stationopt > table {
     width: 100%;
-    heigh: 100%;
+    height: 100%;
     border-collapse: collapse;
 }
 
@@ -76,7 +79,7 @@
     background: #d0d0d0;
 }
 
-#windows .window.map:not(.mobile) #map {
+#windows .window.map:not(.portrait) #map {
     position: absolute;
     left: 0;
     top: 0;
@@ -84,7 +87,7 @@
     height: 100%;
 }
 
-#windows .window.map:not(.mobile) #bikelist {
+#windows .window.map:not(.portrait) #bikelist {
     position: absolute;
     left: 50%;
     top: 0;
@@ -92,7 +95,7 @@
     height: 100%;
 }
 
-#windows .window.map.mobile #map {
+#windows .window.map.portrait #map {
     position: absolute;
     left: 0;
     top: 0;
@@ -100,7 +103,7 @@
     height: 50%;
 }
 
-#windows .window.map.mobile #bikelist {
+#windows .window.map.portrait #bikelist {
     position: absolute;
     left: 0;
     top: 50%;
