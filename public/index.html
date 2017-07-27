@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Barcelona Bicycles</title>
     <link rel="stylesheet" type="text/css" href="bicycle.css">
 </head>
@@ -9,10 +10,16 @@
         Loading...
     </div>
     <div class="window browserNotSupported">
-        Browser not supported :(
+        Browser not supported because <span id="failreason"></span>
+    </div>
+    <div class="window noBikes">
+        Bikes server offline
     </div>
     <div class="window map">
         <div id="map"></div>
+        <div id="bikelist">
+            <div class="title">Nearby Stations</div>
+        </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

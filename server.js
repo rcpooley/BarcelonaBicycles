@@ -43,7 +43,7 @@ app.get('/bicycles', function (req, res) {
 app.get('*', function (req, res) {
     var url = req.url.split('?')[0];
     if (url === '/')url += 'index.html';
-    var path = __dirname + '/public/' + url;
+    var path = __dirname + '/public' + url;
     try {
         fs.accessSync(path, fs.F_OK);
     } catch (e) {

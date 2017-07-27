@@ -1,6 +1,6 @@
 #windows {
     .window:not(.active) {
-        display: none;
+        visibility: hidden;
     }
 
     .window.active {
@@ -9,12 +9,49 @@
         top: 0;
         width: 100%;
         height: 100%;
-        display: block;
+        visibility: visible;
     }
-}
 
-#map {
-    height: 100%;
+    .window.map:not(.mobile) {
+        #map {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+        }
+
+        #bikelist {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+
+            .title {
+                text-align: center;
+                font-size: 30px;
+            }
+        }
+    }
+
+    .window.map.mobile {
+        #map {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 50%;
+        }
+
+        #bikelist {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 50%
+        }
+    }
 }
 
 html, body {
