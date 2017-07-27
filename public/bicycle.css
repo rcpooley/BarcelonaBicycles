@@ -38,6 +38,16 @@
     border-bottom: 1px solid black;
 }
 
+#windows .window.map #bikelist .loading {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+#windows .window.map #bikelist .loading img {
+    width: 50px;
+    height: 50px;
+}
+
 #windows .window.map #bikelist .stationswrapper {
     max-height: 100%;
 }

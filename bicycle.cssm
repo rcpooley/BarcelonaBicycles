@@ -41,6 +41,16 @@
                 border-bottom: 1px solid black;
             }
 
+            .loading {
+                text-align: center;
+                border-bottom: 1px solid black;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+
             .stationswrapper {
                 max-height: 100%;
 

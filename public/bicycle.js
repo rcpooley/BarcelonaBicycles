@@ -143,6 +143,7 @@ function loadBikes() {
             return parseInt(aDist * m - bDist * m);
         });
         stations = bikes.stations;
+        $('.loading').css('display', 'none');
 
         loadStations(5);
 
