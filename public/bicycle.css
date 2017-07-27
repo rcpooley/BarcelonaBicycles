@@ -74,6 +74,11 @@
     width: 80px;
 }
 
+#windows .window.map #bikelist .stationswrapper .stationopt > table td.distt {
+    width: 55px;
+    text-align: right;
+}
+
 #windows .window.map #bikelist .stationswrapper .stationopt > table td.directions {
     text-align: right;
     width: 30px;

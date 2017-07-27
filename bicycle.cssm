@@ -74,6 +74,11 @@
                             width: 80px;
                         }
 
+                        td.distt {
+                            width: 55px;
+                            text-align: right;
+                        }
+
                         td.directions {
                             text-align: right;
                             width: 30px;
