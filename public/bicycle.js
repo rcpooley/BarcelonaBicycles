@@ -53,9 +53,6 @@ var mypage = {
 
 //Lib module
 var lib = {
-    dist: function (x1, y1, x2, y2) {
-        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-    },
     getPosition: function (callback) {
         if (navigator.geolocation) {
             var state = 0;
@@ -151,8 +148,8 @@ function loadBikes() {
         }
 
         bikes.stations.sort(function (a, b) {
-            var aDist = lib.dist(a.latitude, a.longitude, myPos.coords.latitude, myPos.coords.longitude);
-            var bDist = lib.dist(b.latitude, b.longitude, myPos.coords.latitude, myPos.coords.longitude);
+            var aDist = lib.getDistanceFromLatLonInKm(a, myPos.coords);
+            var bDist = lib.getDistanceFromLatLonInKm(b, myPos.coords);
             var m = Math.pow(10, 6);
             return parseInt(aDist * m - bDist * m);
         });
